@@ -28,12 +28,10 @@ export default{
 
     actions: {
 
-        async getClients({ commit, state }) {
+        async getClients({ commit }) {
             try {
-                if (state.clients.length === 0) {
                     const res = await axios.get(base_url + "/banks");
                     commit('setExercise', res.data.results);
-                }
             } catch (error) {
                 console.error(error)
             }

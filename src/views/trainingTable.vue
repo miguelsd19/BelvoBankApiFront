@@ -64,7 +64,7 @@ export default {
 
   methods:{
     ...mapActions("exercises", ["getExercise", "deleteExercise", "getMuscularGroups"]),
-    ...mapMutations("exercises",["setAccountId", "setLinkId"]),
+    ...mapMutations("exercises",["setAccountId", "setLinkId", "setTransactions", "setExercise"]),
 
     OpenMuscleDialog() {
         this.accion2 = true;
@@ -109,8 +109,9 @@ export default {
 ...mapState("exercises", ["Exercise"]),
 },
 async created(){
+    this.setTransactions([])
+    this.setExercise([])
    await this.getExercise(this.$store.state.bankName);
-
 }
 }
 

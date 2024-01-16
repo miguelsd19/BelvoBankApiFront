@@ -7,7 +7,7 @@
             :search="search"
             :items="Transactions"
             :headers="headers"
-            :no-data-text= "'No hay datos disponibles'"
+            :no-data-text= "'No transactions to show'"
             :footer-props="{
             itemsPerPageOptions:[5,10,15,-1],
             itemsPerPageText: 'accounts for page',
@@ -54,7 +54,9 @@
     ...mapState("exercises", ["Transactions"]),
     },
     async created(){
+        this.Transactions = []
        await this.getTransactions();
+       
     
     }
     }

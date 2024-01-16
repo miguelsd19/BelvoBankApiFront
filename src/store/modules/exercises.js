@@ -41,12 +41,10 @@ export default{
 
     actions: {
 
-        async getExercise({ commit, state }, bankName) {
+        async getExercise({ commit }, bankName) {
             try {
-                if (state.Exercise.length === 0) {
                     const res = await axios.get(base_url + "/bank/" + bankName);
                     commit('setExercise', res.data);
-                }
             } catch (error) {
                 console.error(error)
             }
@@ -55,6 +53,7 @@ export default{
             console.log("hey")
             try {
                     const res = await axios.get(base_url + "/transactions/" + state.Link + "/" + state.AccountId);
+                    console.log(res.data)
                     commit('setTransactions', res.data.results);
             } catch (error) {
                 console.error(error)
